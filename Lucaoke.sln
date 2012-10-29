@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolBelt.MacOS", "ToolBelt\ToolBelt\ToolBelt.MacOS.csproj", "{2055D34D-3DF2-444B-937B-32CC1A6E11DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSongDB", "CreateSongDB\CreateSongDB.csproj", "{8212F8BB-31CF-4D88-B4E3-BBB6B2F6B34B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateRsqSongDb", "CreateSongDB\CreateRsqSongDb.csproj", "{8212F8BB-31CF-4D88-B4E3-BBB6B2F6B34B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +21,6 @@ Global
 		{8212F8BB-31CF-4D88-B4E3-BBB6B2F6B34B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ToolBelt\ToolBelt\ToolBelt.MacOS.csproj
+		StartupItem = CreateSongDB\CreateRsqSongDb.csproj
 	EndGlobalSection
 EndGlobal

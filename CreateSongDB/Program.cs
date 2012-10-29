@@ -1,14 +1,31 @@
 using System;
 using ToolBelt;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 
-namespace CreateSongDB
+namespace Lucaoke
 {
 	class MainClass
 	{
-		public static void Main(string[] args)
+		public static int Main(string[] args)
 		{
-			IList<ParsedPath> dirs = DirectoryUtility.GetDirectories(
-				new ParsedPath("*", PathType.Directory), SearchScope.RecurseSubDirectoriesBreadthFirst);
+			try
+			{
+				ITool tool = new CreateRsqSongDb(new ConsoleOutputter());
+
+				((IProcessCommandLine)tool).ProcessCommandLine(args);
+
+				tool.Execute();
+
+				return tool.Output.HasOutputErrors ? 1 : 0;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine (ex.Message);
+				return 1;
+			}
 		}
 	}
 }
