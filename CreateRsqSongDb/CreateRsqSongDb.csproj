@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{8212F8BB-31CF-4D88-B4E3-BBB6B2F6B34B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CreateSongDB</RootNamespace>
-    <AssemblyName>CreateSongDB</AssemblyName>
+    <RootNamespace>Lucaoke</RootNamespace>
+    <AssemblyName>CreateRsqSongDb</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>True</DebugSymbols>
