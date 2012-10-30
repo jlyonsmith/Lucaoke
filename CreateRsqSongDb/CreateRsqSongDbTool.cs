@@ -11,7 +11,7 @@ namespace Lucaoke
 	[CommandLineExample(@"
 CreateRsqSongDb -md:C:\Music\ -ad:H:\Music\ -n:1000 
 ")]
-	public class CreateRsqSongDb : ITool, IProcessCommandLine
+	public class CreateRsqSongDbTool : ITool, IProcessCommandLine
 	{
 		#region Fields
 		CommandLineParser parser;
@@ -23,11 +23,11 @@ CreateRsqSongDb -md:C:\Music\ -ad:H:\Music\ -n:1000
 		public bool ShowHelp { get; set; }
 
 		[CommandLineArgument("musicdir", ShortName="md", Description="Source directory containing .mp3 & .cdg files. Required.", 
-							 Initializer=typeof(CreateRsqSongDb), MethodName="ParseDirectory")]
+							 Initializer=typeof(CreateRsqSongDbTool), MethodName="ParseDirectory")]
 		public ParsedPath MusicDirName { get; set; }
 
 		[CommandLineArgument("altdir", ShortName="ad", Description="Directory which will replace the source directory in the song database file.  Useful when generating the song database on a different machine from the one that will build the RSQ song drive.", 
-		                     Initializer=typeof(CreateRsqSongDb), MethodName="ParseDirectory")]
+		                     Initializer=typeof(CreateRsqSongDbTool), MethodName="ParseDirectory")]
 		public ParsedPath AltDirName { get; set; }
 
 		[CommandLineArgument("songnum", ShortName="n", Description="Number to use for the first song. Defaults to 1000.")]
@@ -51,7 +51,7 @@ CreateRsqSongDb -md:C:\Music\ -ad:H:\Music\ -n:1000
 		#endregion
 
 		#region Construction
-		public CreateRsqSongDb(IOutputter outputter)
+		public CreateRsqSongDbTool(IOutputter outputter)
 		{
 			this.Output = new OutputHelper(outputter);
 		}
@@ -111,7 +111,10 @@ CreateRsqSongDb -md:C:\Music\ -ad:H:\Music\ -n:1000
 				IList<ParsedPath> dirs = DirectoryUtility.GetDirectories(
 					MusicDirName.Append("*", PathType.Wildcard), 
 					SearchScope.RecurseSubDirectoriesBreadthFirst);
-				
+
+                dirs = new List<ParsedPath>(dirs);
+                dirs.Insert(0, MusicDirName);
+
 				foreach (var dir in dirs)
 				{
 					IList<ParsedPath> mp3s = DirectoryUtility.GetFiles(dir.WithFileAndExtension("*.mp3"), SearchScope.DirectoryOnly);

@@ -11,10 +11,10 @@ namespace Lucaoke
 	{
 		public static int Main(string[] args)
 		{
+            ITool tool = new CreateRsqSongDbTool(new ConsoleOutputter());
+
 			try
 			{
-				ITool tool = new CreateRsqSongDb(new ConsoleOutputter());
-
 				((IProcessCommandLine)tool).ProcessCommandLine(args);
 
 				tool.Execute();
@@ -23,7 +23,7 @@ namespace Lucaoke
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine (ex.Message);
+				tool.Output.Error(ex.Message);
 				return 1;
 			}
 		}
