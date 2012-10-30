@@ -26,7 +26,7 @@ CreateRsqSongDb -md:C:\Music\ -ad:H:\Music\ -n:1000
 							 Initializer=typeof(CreateRsqSongDb), MethodName="ParseDirectory")]
 		public ParsedPath MusicDirName { get; set; }
 
-		[CommandLineArgument("altdir", ShortName="ad", Description="Directory which will replace the source directory in the song database file.  Useful when generating the song database on a different machine from the that will build the RSQ song drive.", 
+		[CommandLineArgument("altdir", ShortName="ad", Description="Directory which will replace the source directory in the song database file.  Useful when generating the song database on a different machine from the one that will build the RSQ song drive.", 
 		                     Initializer=typeof(CreateRsqSongDb), MethodName="ParseDirectory")]
 		public ParsedPath AltDirName { get; set; }
 
